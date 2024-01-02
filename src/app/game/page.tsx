@@ -14,10 +14,10 @@ const GamePage = () => {
         <h1>Welcome to Next.js 14!</h1>
         <p>Edit this file to start building your app.</p>
         <div className="flex items-center gap-2">
-          {/* <Button onClick={() => handleCallAlert("Hello!")}>Call Alert!</Button>
+          <Button onClick={() => handleCallAlert("Hello!")}>Call Alert!</Button>
           <Button variant={"danger"} onClick={() => handleCallAlert("Delete")}>
             Delete
-          </Button> */}
+          </Button>
           <Button
             variant={"secondary"}
             size={"sm"}

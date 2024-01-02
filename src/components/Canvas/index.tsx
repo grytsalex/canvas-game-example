@@ -6,7 +6,7 @@ interface CanvasProps {
     height?: number;
 }
 
-const Canvas: React.FC<CanvasProps> = ({ width = 800, height = 600 }) => {
+const Canvas: React.FC<CanvasProps> = ({ width = 800, height = 600, ...rest }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Canvas: React.FC<CanvasProps> = ({ width = 800, height = 600 }) => {
         }
     }, [width, height]);
 
-    return <canvas ref={canvasRef} width={width} height={height} />;
+    return <canvas ref={canvasRef} width={width} height={height} {...rest}/>;
 };
 
 export default Canvas;
