@@ -1,27 +1,24 @@
-"use client"
-import { useEffect, useRef } from 'react';
+"use client";
+import { useLayoutEffect, useRef } from "react";
+import Player from "@/modules/player/PlayerClass";
 
-interface CanvasProps {
-    width?: number;
-    height?: number;
-}
+const Canvas: React.FC = (props) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-const Canvas: React.FC<CanvasProps> = ({ width = 800, height = 600, ...rest }) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+  useLayoutEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const context = canvas?.getContext("2d");
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const context = canvas?.getContext('2d');
+    if (context) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const player = new Player(context);
+      player.animate();
+    }
+  }, []);
 
-        if (context) {
-            // Your canvas drawing logic goes here
-            // For example, you can draw a rectangle:
-            context.fillStyle = 'red';
-            context.fillRect(0, 0, width, height);
-        }
-    }, [width, height]);
-
-    return <canvas ref={canvasRef} width={width} height={height} {...rest}/>;
+  return <canvas ref={canvasRef} {...props} />;
 };
 
 export default Canvas;
