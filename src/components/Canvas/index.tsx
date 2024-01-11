@@ -14,6 +14,8 @@ export const keys = {
   }
 };
 
+const projectiles = [];
+
 const Canvas: React.FC = (props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

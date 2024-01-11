@@ -25,10 +25,12 @@ class Player {
   image: HTMLImageElement;
   private ctx: TCanvasCtx;
   private keys: TKeys;
+  private projectiles: any[];
 
-  constructor(ctx: TCanvasCtx, keys: TKeys) {
+  constructor(ctx: TCanvasCtx, keys: TKeys, projectiles: any[]) {
     this.ctx = ctx;
     this.keys = keys;
+    this.projectiles = projectiles;
 
     this.rotation = 0;
 
@@ -60,6 +62,10 @@ class Player {
     this.ctx.fillStyle = "black";
     this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.update();
+
+    this.projectiles.forEach((projectile) => {
+      projectile.update();
+    });
 
     if (this.keys.a.pressed && this.position.x >= 0) {
       this.velocity.x = -SPEED;

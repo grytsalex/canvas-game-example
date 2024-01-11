@@ -2,6 +2,7 @@ interface IPosition {
   x: number;
   y: number;
 }
+type TCanvasCtx = CanvasRenderingContext2D | null;
 
 class ProjectileClass {
   position: IPosition;
@@ -9,7 +10,7 @@ class ProjectileClass {
   radius: number;
   private ctx: TCanvasCtx;
 
-  constructor(ctx: TCanvasCtx; position: IPosition, velocity: IPosition) {
+  constructor(ctx: TCanvasCtx, position: IPosition, velocity: IPosition) {
     this.ctx = ctx;
 
     this.position = position;
